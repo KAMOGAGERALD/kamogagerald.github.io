@@ -1,0 +1,336 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #050505;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+}
+
+/* HEADER */
+.header {
+    background-color: #111111;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #ee0a0a;
+}
+
+.header h1 {
+    color: #ee0a0a;
+    font-size: 28px;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 16px;
+}
+
+nav a:hover {
+    color: #ee0a0a;
+}
+
+/* MAIN */
+.main {
+    padding: 40px;
+}
+
+.section {
+    margin-bottom: 40px;
+    padding: 30px;
+    background-color: #111111;
+    border-radius: 10px;
+    border-left: 4px solid #ee0a0a;
+}
+
+.section h2 {
+    color: #ee0a0a;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.section p {
+    color: #cccccc;
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+
+.section ul {
+    color: #cccccc;
+    font-size: 16px;
+    line-height: 2;
+    padding-left: 20px;
+}
+
+.section img {
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+}
+
+/* FOOTER */
+.footer {
+    background-color: #111111;
+    text-align: center;
+    padding: 20px;
+    color: #666666;
+    font-size: 14px;
+    border-top: 3px solid #ee0a0a;
+}
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* TABLETS (screens 768px and below) */
+@media (max-width: 768px) {
+
+    .header {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .header h1 {
+        margin-bottom: 15px;
+        font-size: 24px;
+    }
+
+    nav a {
+        margin: 0 10px;
+        font-size: 14px;
+    }
+
+    .main {
+        padding: 20px;
+    }
+
+    .section {
+        padding: 20px;
+    }
+
+}
+
+/* MOBILE PHONES (screens 480px and below) */
+@media (max-width: 480px) {
+
+    .header h1 {
+        font-size: 20px;
+    }
+
+    nav a {
+        display: block;
+        margin: 8px 0;
+        font-size: 16px;
+    }
+
+    .section h2 {
+        font-size: 20px;
+    }
+
+    .section p {
+        font-size: 14px;
+    }
+
+    .section img {
+        width: 100%;
+    }
+
+    .footer {
+        font-size: 12px;
+        padding: 15px;
+    }
+
+}
+
+/* ===== CONTACT FORM ===== */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    color: #ee0a0a;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    background-color: #1a1a1a;
+    border: 1px solid #333333;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+    outline: none;
+    padding: 12px 15px;
+    transition: border 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border: 1px solid #ee0a0a;
+}
+
+.form-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #ee0a0a;
+    display: inline;
+}
+
+.form-group:last-of-type label {
+    display: inline;
+    margin-left: 8px;
+    text-transform: none;
+    font-size: 13px;
+    color: #cccccc;
+}
+
+button[type="submit"] {
+    background-color: #ee0a0a;
+    border: none;
+    border-radius: 8px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 15px 30px;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+button[type="submit"]:hover {
+    background-color: #cc0000;
+}
+
+/* ===== JAVASCRIPT BUTTONS ===== */
+.btn-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.btn-group button {
+    background-color: #1a1a1a;
+    border: 2px solid #ee0a0a;
+    border-radius: 8px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 12px 20px;
+    transition: all 0.3s;
+}
+
+.btn-group button:hover {
+    background-color: #ee0a0a;
+    color: #ffffff;
+}
+
+/* ===== ANIMATIONS ===== */
+
+/* FADE IN - page loads */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* PULSE - grabs attention */
+@keyframes pulse {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* SLIDE IN FROM LEFT */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-60px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* GLOW - text glowing effect */
+@keyframes glow {
+    0%   { text-shadow: 0 0 5px #ee0a0a; }
+    50%  { text-shadow: 0 0 20px #ee0a0a, 0 0 40px #ee0a0a; }
+    100% { text-shadow: 0 0 5px #ee0a0a; }
+}
+
+/* APPLY ANIMATIONS */
+
+/* Header title glows */
+.header h1 {
+    animation: glow 2s infinite;
+}
+
+/* Sections slide in */
+.section {
+    animation: slideInLeft 0.6s ease-out;
+}
+
+/* Main title fades in */
+#main-title {
+    animation: fadeIn 1s ease-out;
+}
+
+/* Submit button pulses */
+button[type="submit"] {
+    animation: pulse 2s infinite;
+}
+
+/* Nav links slide effect */
+nav a {
+    transition: color 0.3s, letter-spacing 0.3s;
+}
+
+
+
+/* Section hover effect */
+.section {
+    transition: transform 0.3s, border-left 0.3s;
+}
+
+.section:hover {
+    transform: translateX(8px);
+    border-left: 4px solid #ffffff;
+}
+
+/* Image hover zoom */
+.section img {
+    transition: transform 0.4s;
+}
+
+.section img:hover {
+    transform: scale(1.05);
+}
