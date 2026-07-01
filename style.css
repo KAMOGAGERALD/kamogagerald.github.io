@@ -423,3 +423,46 @@ body.light-mode {
     background: var(--text-bright);
     color: var(--primary);
 }
+
+/* ===== NAME INPUT IN BANNER ===== */
+#name-input-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#name-input-area p {
+    margin: 0;
+    font-size: 15px;
+}
+
+#visitor-name-input {
+    background: rgba(255,255,255,0.2);
+    border: 2px solid var(--text-bright);
+    border-radius: 8px;
+    color: var(--text-bright);
+    font-size: 14px;
+    padding: 6px 12px;
+    outline: none;
+    width: 180px;
+}
+
+#visitor-name-input::placeholder {
+    color: rgba(255,255,255,0.7);
+}
+
+#save-name-btn {
+    background: var(--text-bright);
+    border: none;
+    border-radius: 8px;
+    color: var(--primary);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 6px 14px;
+    transition: all var(--transition);
+}
+
+#save-name-btn:hover {
+    opacity: 0.8;
+}

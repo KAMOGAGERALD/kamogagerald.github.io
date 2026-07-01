@@ -83,13 +83,41 @@ localStorage.setItem("visits", visits);
 
 // ===== WELCOME BANNER =====
 let visitorName = localStorage.getItem("visitorName");
+const welcomeText = document.getElementById("welcome-text");
+const nameInputArea = document.getElementById("name-input-area");
 
-if (!visitorName) {
-    visitorName = prompt("👋 Welcome! What is your name?");
-    if (visitorName) {
-        localStorage.setItem("visitorName", visitorName);
+if (visitorName) {
+    // Name already saved — show welcome message
+    nameInputArea.style.display = "none";
+    welcomeText.style.display = "block";
+    if (visits === 1) {
+        welcomeText.innerText =
+            "👋 Welcome " + visitorName + "! Thanks for visiting!";
+    } else {
+        welcomeText.innerText =
+            "🔥 Welcome back " + visitorName + "! Visit number " + visits + "!";
     }
+} else {
+    // No name saved — show input
+    nameInputArea.style.display = "flex";
+    welcomeText.style.display = "none";
 }
+
+// Save name when button clicked
+document.getElementById("save-name-btn").addEventListener("click", function() {
+    const inputVal = document.getElementById("visitor-name-input").value;
+    if (inputVal.trim() !== "") {
+        localStorage.setItem("visitorName", inputVal);
+        nameInputArea.style.display = "none";
+        welcomeText.style.display = "block";
+        welcomeText.innerText = "👋 Welcome " + inputVal + "! Thanks for visiting!";
+    }
+});
+
+// ===== CLOSE BANNER =====
+document.getElementById("close-banner").addEventListener("click", function() {
+    document.getElementById("welcome-banner").style.display = "none";
+});
 
 const welcomeText = document.getElementById("welcome-text");
 if (visitorName) {
