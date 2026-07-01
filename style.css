@@ -1,3 +1,18 @@
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary: #ee0a0a;
+    --primary-dark: #cc0000;
+    --bg: #050505;
+    --card: #111111;
+    --card-light: #1a1a1a;
+    --text: #cccccc;
+    --text-bright: #ffffff;
+    --text-dim: #666666;
+    --border-radius: 10px;
+    --transition: 0.3s ease;
+    --shadow: 0 4px 20px rgba(238, 10, 10, 0.2);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,38 +20,46 @@
 }
 
 body {
-    background-color: #050505;
+    background-color: var(--bg);
     font-family: Arial, sans-serif;
-    color: #ffffff;
+    color: var(--text-bright);
 }
 
-/* HEADER */
+/* ===== HEADER ===== */
 .header {
-    background-color: #111111;
+    background-color: var(--card);
     padding: 20px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 3px solid #ee0a0a;
+    border-bottom: 3px solid var(--primary);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .header h1 {
-    color: #ee0a0a;
+    color: var(--primary);
     font-size: 28px;
+    animation: glow 2s infinite;
 }
 
 nav a {
-    color: #ffffff;
+    color: var(--text-bright);
     text-decoration: none;
     margin-left: 20px;
     font-size: 16px;
+    transition: color var(--transition),
+                letter-spacing var(--transition);
 }
 
 nav a:hover {
-    color: #ee0a0a;
+    color: var(--primary);
+    letter-spacing: 2px;
 }
 
-/* MAIN */
+/* ===== MAIN ===== */
 .main {
     padding: 40px;
 }
@@ -44,51 +67,65 @@ nav a:hover {
 .section {
     margin-bottom: 40px;
     padding: 30px;
-    background-color: #111111;
-    border-radius: 10px;
-    border-left: 4px solid #ee0a0a;
+    background-color: var(--card);
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--primary);
+    transition: transform var(--transition),
+                box-shadow var(--transition);
+    animation: slideInLeft 0.6s ease-out;
+}
+
+.section:hover {
+    transform: translateX(8px);
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--text-bright);
 }
 
 .section h2 {
-    color: #ee0a0a;
+    color: var(--primary);
     font-size: 24px;
     margin-bottom: 15px;
 }
 
 .section p {
-    color: #cccccc;
+    color: var(--text);
     font-size: 16px;
     line-height: 1.8;
     margin-bottom: 10px;
 }
 
 .section ul {
-    color: #cccccc;
+    color: var(--text);
     font-size: 16px;
     line-height: 2;
     padding-left: 20px;
 }
 
 .section img {
-    border-radius: 10px;
+    border-radius: var(--border-radius);
     width: 100%;
     max-width: 400px;
+    transition: transform var(--transition),
+                box-shadow var(--transition);
 }
 
-/* FOOTER */
+.section img:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow);
+}
+
+/* ===== FOOTER ===== */
 .footer {
-    background-color: #111111;
+    background-color: var(--card);
     text-align: center;
     padding: 20px;
-    color: #666666;
+    color: var(--text-dim);
     font-size: 14px;
-    border-top: 3px solid #ee0a0a;
+    border-top: 3px solid var(--primary);
 }
-/* ===== RESPONSIVE DESIGN ===== */
 
-/* TABLETS (screens 768px and below) */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-
     .header {
         flex-direction: column;
         text-align: center;
@@ -112,12 +149,9 @@ nav a:hover {
     .section {
         padding: 20px;
     }
-
 }
 
-/* MOBILE PHONES (screens 480px and below) */
 @media (max-width: 480px) {
-
     .header h1 {
         font-size: 20px;
     }
@@ -144,7 +178,6 @@ nav a:hover {
         font-size: 12px;
         padding: 15px;
     }
-
 }
 
 /* ===== CONTACT FORM ===== */
@@ -161,7 +194,7 @@ nav a:hover {
 }
 
 .form-group label {
-    color: #ee0a0a;
+    color: var(--primary);
     font-size: 14px;
     font-weight: bold;
     text-transform: uppercase;
@@ -171,27 +204,29 @@ nav a:hover {
 .form-group input,
 .form-group select,
 .form-group textarea {
-    background-color: #1a1a1a;
+    background-color: var(--card-light);
     border: 1px solid #333333;
-    border-radius: 8px;
-    color: #ffffff;
+    border-radius: var(--border-radius);
+    color: var(--text-bright);
     font-size: 15px;
     font-family: Arial, sans-serif;
     outline: none;
     padding: 12px 15px;
-    transition: border 0.3s;
+    transition: border var(--transition),
+                box-shadow var(--transition);
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-    border: 1px solid #ee0a0a;
+    border: 1px solid var(--primary);
+    box-shadow: var(--shadow);
 }
 
 .form-group input[type="checkbox"] {
     width: 18px;
     height: 18px;
-    accent-color: #ee0a0a;
+    accent-color: var(--primary);
     display: inline;
 }
 
@@ -200,29 +235,34 @@ nav a:hover {
     margin-left: 8px;
     text-transform: none;
     font-size: 13px;
-    color: #cccccc;
+    color: var(--text);
 }
 
 button[type="submit"] {
-    background-color: #ee0a0a;
+    background-color: var(--primary);
     border: none;
-    border-radius: 8px;
-    color: #ffffff;
+    border-radius: var(--border-radius);
+    color: var(--text-bright);
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
     letter-spacing: 1px;
     padding: 15px 30px;
     text-transform: uppercase;
-    transition: background-color 0.3s;
+    transition: background-color var(--transition),
+                box-shadow var(--transition),
+                transform var(--transition);
     width: 100%;
+    animation: pulse 2s infinite;
 }
 
 button[type="submit"]:hover {
-    background-color: #cc0000;
+    background-color: var(--primary-dark);
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
 }
 
-/* ===== JAVASCRIPT BUTTONS ===== */
+/* ===== JS BUTTONS ===== */
 .btn-group {
     display: flex;
     gap: 15px;
@@ -231,106 +271,47 @@ button[type="submit"]:hover {
 }
 
 .btn-group button {
-    background-color: #1a1a1a;
-    border: 2px solid #ee0a0a;
-    border-radius: 8px;
-    color: #ffffff;
+    background-color: var(--card-light);
+    border: 2px solid var(--primary);
+    border-radius: var(--border-radius);
+    color: var(--text-bright);
     cursor: pointer;
     font-size: 14px;
     font-weight: bold;
     padding: 12px 20px;
-    transition: all 0.3s;
+    transition: all var(--transition);
 }
 
 .btn-group button:hover {
-    background-color: #ee0a0a;
-    color: #ffffff;
+    background-color: var(--primary);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
 }
 
 /* ===== ANIMATIONS ===== */
-
-/* FADE IN - page loads */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
-/* PULSE - grabs attention */
 @keyframes pulse {
     0%   { transform: scale(1); }
     50%  { transform: scale(1.05); }
     100% { transform: scale(1); }
 }
 
-/* SLIDE IN FROM LEFT */
 @keyframes slideInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-60px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+    from { opacity: 0; transform: translateX(-60px); }
+    to   { opacity: 1; transform: translateX(0); }
 }
 
-/* GLOW - text glowing effect */
 @keyframes glow {
-    0%   { text-shadow: 0 0 5px #ee0a0a; }
-    50%  { text-shadow: 0 0 20px #ee0a0a, 0 0 40px #ee0a0a; }
-    100% { text-shadow: 0 0 5px #ee0a0a; }
+    0%   { text-shadow: 0 0 5px var(--primary); }
+    50%  { text-shadow: 0 0 20px var(--primary),
+                        0 0 40px var(--primary); }
+    100% { text-shadow: 0 0 5px var(--primary); }
 }
 
-/* APPLY ANIMATIONS */
-
-/* Header title glows */
-.header h1 {
-    animation: glow 2s infinite;
-}
-
-/* Sections slide in */
-.section {
-    animation: slideInLeft 0.6s ease-out;
-}
-
-/* Main title fades in */
 #main-title {
     animation: fadeIn 1s ease-out;
-}
-
-/* Submit button pulses */
-button[type="submit"] {
-    animation: pulse 2s infinite;
-}
-
-/* Nav links slide effect */
-nav a {
-    transition: color 0.3s, letter-spacing 0.3s;
-}
-
-
-
-/* Section hover effect */
-.section {
-    transition: transform 0.3s, border-left 0.3s;
-}
-
-.section:hover {
-    transform: translateX(8px);
-    border-left: 4px solid #ffffff;
-}
-
-/* Image hover zoom */
-.section img {
-    transition: transform 0.4s;
-}
-
-.section img:hover {
-    transform: scale(1.05);
 }
