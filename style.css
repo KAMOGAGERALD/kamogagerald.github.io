@@ -466,3 +466,53 @@ body.light-mode {
 #save-name-btn:hover {
     opacity: 0.8;
 }
+
+/* ===== QUOTE BOX ===== */
+#quote-box {
+    text-align: center;
+    padding: 20px;
+}
+
+#quote-text {
+    color: var(--text-bright);
+    font-size: 18px;
+    font-style: italic;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+#quote-author {
+    color: var(--primary);
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+#new-quote-btn {
+    background-color: var(--primary);
+    border: none;
+    border-radius: var(--border-radius);
+    color: var(--text-bright);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 24px;
+    transition: all var(--transition);
+}
+
+#new-quote-btn:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+/* ===== WEATHER BOX ===== */
+#weather-box {
+    text-align: center;
+    padding: 20px;
+}
+
+#weather-info {
+    color: var(--text-bright);
+    font-size: 16px;
+    line-height: 2;
+}

@@ -114,6 +114,69 @@ document.getElementById("save-name-btn").addEventListener("click", function() {
     }
 });
 
+// ===== FETCH RANDOM QUOTE =====
+function fetchQuote() {
+    document.getElementById("quote-text").innerText = "Loading...";
+    document.getElementById("quote-author").innerText = "";
+
+    fetch("https://api.quotable.io/random")
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            document.getElementById("quote-text").innerText =
+                '"' + data.content + '"';
+            document.getElementById("quote-author").innerText =
+                "— " + data.author;
+        })
+        .catch(function(error) {
+            document.getElementById("quote-text").innerText =
+                "Could not load quote. Try again!";
+        });
+}
+
+// Load quote on page load
+fetchQuote();
+
+// New quote button
+document.getElementById("new-quote-btn").addEventListener("click", fetchQuote);
+
+
+// ===== FETCH LIVE WEATHER =====
+function fetchWeather() {
+    const city = "Kampala";
+    const apiKey = "bd5e378503939ddaee76f12ad7a97608";
+    const url = "https://api.openweathermap.org/data/2.5/weather?q="
+        + city + "&appid=" + apiKey + "&units=metric";
+
+    fetch(url)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            const temp = data.main.temp;
+            const feels = data.main.feels_like;
+            const desc = data.weather[0].description;
+            const humidity = data.main.humidity;
+            const wind = data.wind.speed;
+
+            document.getElementById("weather-info").innerHTML =
+                "📍 " + data.name + ", Uganda<br>" +
+                "🌡️ Temperature: " + temp + "°C<br>" +
+                "🤔 Feels like: " + feels + "°C<br>" +
+                "☁️ " + desc + "<br>" +
+                "💧 Humidity: " + humidity + "%<br>" +
+                "💨 Wind: " + wind + " m/s";
+        })
+        .catch(function(error) {
+            document.getElementById("weather-info").innerText =
+                "Could not load weather data.";
+        });
+}
+
+// Load weather on page load
+fetchWeather();
+
 // ===== CLOSE BANNER =====
 document.getElementById("close-banner").addEventListener("click", function() {
     document.getElementById("welcome-banner").style.display = "none";
