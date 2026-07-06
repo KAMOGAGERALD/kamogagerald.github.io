@@ -119,18 +119,3 @@ document.getElementById("close-banner").addEventListener("click", function() {
     document.getElementById("welcome-banner").style.display = "none";
 });
 
-const welcomeText = document.getElementById("welcome-text");
-if (visitorName) {
-    if (visits === 1) {
-        welcomeText.innerText =
-            "👋 Welcome " + visitorName + "! Thanks for visiting for the first time!";
-    } else {
-        welcomeText.innerText =
-            "🔥 Welcome back " + visitorName + "! This is your visit number " + visits + "!";
-    }
-}
-
-// ===== CLOSE BANNER =====
-document.getElementById("close-banner").addEventListener("click", function() {
-    document.getElementById("welcome-banner").style.display = "none";
-});
