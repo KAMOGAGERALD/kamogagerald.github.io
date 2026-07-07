@@ -29,14 +29,12 @@ document.getElementById("submit-btn").addEventListener("click", function(e) {
 // ===== DARK / LIGHT MODE + LOCAL STORAGE =====
 const themeBtn = document.getElementById("theme-toggle");
 
-// Check saved theme on page load
 const savedTheme = localStorage.getItem("theme");
 if (savedTheme === "light") {
     document.body.classList.add("light-mode");
     themeBtn.innerText = "☀️ Light";
 }
 
-// Toggle theme and save to local storage
 themeBtn.addEventListener("click", function() {
     document.body.classList.toggle("light-mode");
     if (document.body.classList.contains("light-mode")) {
@@ -87,7 +85,6 @@ const welcomeText = document.getElementById("welcome-text");
 const nameInputArea = document.getElementById("name-input-area");
 
 if (visitorName) {
-    // Name already saved — show welcome message
     nameInputArea.style.display = "none";
     welcomeText.style.display = "block";
     if (visits === 1) {
@@ -98,12 +95,10 @@ if (visitorName) {
             "🔥 Welcome back " + visitorName + "! Visit number " + visits + "!";
     }
 } else {
-    // No name saved — show input
     nameInputArea.style.display = "flex";
     welcomeText.style.display = "none";
 }
 
-// Save name when button clicked
 document.getElementById("save-name-btn").addEventListener("click", function() {
     const inputVal = document.getElementById("visitor-name-input").value;
     if (inputVal.trim() !== "") {
@@ -114,18 +109,22 @@ document.getElementById("save-name-btn").addEventListener("click", function() {
     }
 });
 
+document.getElementById("close-banner").addEventListener("click", function() {
+    document.getElementById("welcome-banner").style.display = "none";
+});
+
 // ===== FETCH RANDOM QUOTE =====
 function fetchQuote() {
     document.getElementById("quote-text").innerText = "Loading...";
     document.getElementById("quote-author").innerText = "";
 
-    fetch("https://api.quotable.io/random")
+    fetch("https://dummyjson.com/quotes/random")
         .then(function(response) {
             return response.json();
         })
         .then(function(data) {
             document.getElementById("quote-text").innerText =
-                '"' + data.content + '"';
+                '"' + data.quote + '"';
             document.getElementById("quote-author").innerText =
                 "— " + data.author;
         })
@@ -135,17 +134,13 @@ function fetchQuote() {
         });
 }
 
-// Load quote on page load
 fetchQuote();
-
-// New quote button
 document.getElementById("new-quote-btn").addEventListener("click", fetchQuote);
-
 
 // ===== FETCH LIVE WEATHER =====
 function fetchWeather() {
     const city = "Kampala";
-    const apiKey = "bd5e378503939ddaee76f12ad7a97608";
+    const apiKey = "96597a4d0d08002a0e7b1ca265620b32";
     const url = "https://api.openweathermap.org/data/2.5/weather?q="
         + city + "&appid=" + apiKey + "&units=metric";
 
@@ -174,11 +169,4 @@ function fetchWeather() {
         });
 }
 
-// Load weather on page load
 fetchWeather();
-
-// ===== CLOSE BANNER =====
-document.getElementById("close-banner").addEventListener("click", function() {
-    document.getElementById("welcome-banner").style.display = "none";
-});
-
